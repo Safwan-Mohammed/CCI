@@ -1,0 +1,34 @@
+from cv2 import THRESH_BINARY
+import numpy as np
+import cv2 as cv
+img=cv.imread('shapes.jpeg',1)
+imgGrey=cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+_,thrash=cv.threshold(imgGrey,167,255,THRESH_BINARY)
+contours,hierarchy=cv.findContours(thrash,cv.RETR_TREE,cv.CHAIN_APPROX_NONE)
+s=input("Enter the shape: ")
+if s.lower()=="triangle":
+     cv.drawContours(img,contours,33,(0,255,0),3)
+elif s.lower()=="rectangle":
+     cv.drawContours(img,contours,86,(0,255,0),3)
+elif s.lower()=="pentagon":
+     cv.drawContours(img,contours,46,(0,255,0),3)
+elif s.lower()=="hexagon":
+     cv.drawContours(img,contours,74,(0,255,0),3)
+elif s.lower()=="heptagon":
+     cv.drawContours(img,contours,60,(0,255,0),3)
+elif s.lower()=="trapezium":
+     cv.drawContours(img,contours,1,(0,255,0),3)
+elif s.lower()=="oval":
+     cv.drawContours(img,contours,15,(0,255,0),3)
+elif s.lower()=="ellipse":
+     cv.drawContours(img,contours,15,(0,255,0),3)
+elif s.lower()=="square":
+     cv.drawContours(img,contours,100,(0,255,0),3)
+elif s.lower()=="circle":
+     cv.drawContours(img,contours,110,(0,255,0),3)
+elif s.lower()=="octagon":
+     cv.drawContours(img,contours,119,(0,255,0),3)
+else:
+     print("Shape not availiable in list")         
+cv.imshow('Img',img)
+cv.waitKey(0)
